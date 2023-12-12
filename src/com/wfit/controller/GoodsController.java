@@ -11,6 +11,10 @@ public class GoodsController {
 
     private GoodsService goodsService;
 
+    /**
+     * 查询
+     * @return
+     */
     public List<Goods> queryGoods(){
         goodsService = new GoodsServiceImpl();
         List<Goods> list = new ArrayList<>();
@@ -20,6 +24,19 @@ public class GoodsController {
             System.out.println(e.getMessage());
         }
         return list;
+    }
+
+    /**
+     * 增加
+     * @param goods
+     */
+    public void addGoods(Goods goods){
+        goodsService = new GoodsServiceImpl();
+        try{
+            goodsService.addGoods(goods);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
 }

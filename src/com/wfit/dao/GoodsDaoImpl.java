@@ -32,4 +32,23 @@ public class GoodsDaoImpl extends Dao implements GoodsDao{
         rs.close();
         return list;
     }
+
+    /**
+     * 新增
+     * @param goods
+     * @throws Exception
+     */
+    @Override
+    public void addGoods(Goods goods) throws Exception {
+        Connection conn = getConnection();
+        String sql = "insert into t_goods values(?,?,?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, goods.getId());
+        ps.setString(2, goods.getName());
+        ps.setDouble(3,goods.getPrice());
+        ps.executeUpdate();
+        ps.close();
+        conn.close();
+    }
+
 }
